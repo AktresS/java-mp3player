@@ -1,0 +1,3 @@
+Playlist2
+Track1 Artist1 1:23
+Track2 Artist2 1:23
