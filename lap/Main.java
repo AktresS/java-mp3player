@@ -1,12 +1,33 @@
 package lap;
-import java.io.*;
+import javax.swing.*;
 import java.util.Scanner;
-import java.io.FileOutputStream;
 
 public class Main {
+    private  static void MusicPlayerGUI(){
+        //Вызов метода invokeLater из класса SwingUtilities добавляет задание (Runnable)
+        // в очередь событий диспетчерского потока (Event Dispatch Thread). Runnable — это интерфейс,
+        // который имеет единственный метод run(). В Swing, все изменения в пользовательском интерфейсе
+        // должны выполняться в диспетчерском потоке событий. Это гарантирует, что графический интерфейс
+        // будет обновляться корректно и не будет ошибок из-за многопоточности.
+        SwingUtilities.invokeLater(new Runnable(){
+            //Объявляет новый анонимный класс, который реализует интерфейс Runnable, и переопределяет его метод run().
+            // В методе run() содержится код, который будет выполнен в диспетчерском потоке событий.
+            @Override
+
+            public  void run(){
+                //Создает новый объект класса MusicPlayerGUI и делает его видимым, вызывая метод setVisible(true).
+                // Это открывает окно графического интерфейса.
+                new MusicPlayerGUI().setVisible(true);
+      /*          Song song = new Song("lap/assets/Duncan Laurence - Arcade (Евровидение 2019 Нидерланды).mp3");
+                System.out.println(song.getTitle());
+                System.out.println(song.getArtist());*/
+            }
+        });
+    }
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String titlePlaylist;
+        MusicPlayerGUI();
+        /*Scanner scan = new Scanner(System.in);
+        String titlePlaylist, artist, track, lenght;
         int selection;
         int index;
 
@@ -78,7 +99,15 @@ public class Main {
                     System.out.print("Введите номер плейлиста: ");
                     scan.nextLine();
                     index = scan.nextInt();
-                    playlists.addSong(index);
+                    System.out.print("Введите имя исполнителя: ");
+                    scan.nextLine();
+                    artist = scan.nextLine();
+
+                    System.out.print("Введите название трека: ");
+                    track = scan.nextLine();
+                    System.out.print("Введите длину трека: ");
+                    lenght = scan.nextLine();
+                    playlists.addSong(index, artist, track, lenght);
                     break;
                 case 10:
                     playlists.viewPlaylistAndSong();
@@ -98,9 +127,10 @@ public class Main {
                     playlists.viewPlaylists();
                     break;
             }
-        }
-
+        }*/
     }
+
+
 }
 
 /*//Создать плейлист

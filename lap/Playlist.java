@@ -50,7 +50,10 @@ public class Playlist {
         return playlist.get(index).getLength();
      }
 
-    //Убрать трек по номеру
+    public void deleteSong(Song track) {
+        playlist.remove(track);
+    }
+     //Убрать трек по номеру
     public void removeSongI(int index){
         playlist.remove(index);
     }
@@ -93,6 +96,14 @@ public class Playlist {
         } catch (IOException e){
             System.out.println("Ошибка: " + e);
         }
+    }
+
+    public Song getTrackAtIndex(Integer index) {
+        for (Integer i = 0; i < playlist.size(); i++) {
+            if (i.equals(index))
+                return playlist.get(i);
+        }
+        return null;
     }
 
     //Загрузить плейлист
